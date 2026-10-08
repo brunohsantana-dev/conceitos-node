@@ -1,0 +1,10 @@
+// use prisma-8
+
+model User {
+  id    ObjectId @id @map("_id")
+  email String   @unique
+  name  String
+  age   Int32
+
+  @@map("users")
+}

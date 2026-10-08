@@ -1,0 +1,24 @@
+{
+  "name": "conceitos-node",
+  "version": "1.0.0",
+  "description": "this is a project to study and learn node basic concepts",
+  "license": "ISC",
+  "author": "Bruno Santana",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "contract:emit": "prisma contract emit"
+  },
+  "dependencies": {
+    "@prisma/orm-mongo": "^8.0.0-rc.17",
+    "dotenv": "^18.0.6",
+    "express": "^5.2.1",
+    "mongodb": "^7.7.0"
+  },
+  "devDependencies": {
+    "@prisma/cli-engine": "^0.7.0",
+    "@types/node": "^26.6.4",
+    "prisma": "^8.0.0-rc.22"
+  }
+}
