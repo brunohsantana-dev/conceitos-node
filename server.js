@@ -115,6 +115,57 @@ app.post("/users", async (req, res) => {
   }
 });
 
+app.put("/users/:id", async (req, res) => {
+  try {
+    const user = await db.orm.users
+      .where({ _id: req.params.id })
+      .update({
+        name: req.body.name,
+        email: req.body.email,
+        age: req.body.age
+      });
+
+    if (!user) {
+      return res.status(404).json({
+        message: "Usuário não encontrado."
+      });
+    }
+
+    res.status(200).json(user);
+  } catch (erro) {
+    console.error(erro);
+
+    res.status(500).json({
+      message: "Erro ao atualizar usuário."
+    });
+  }
+});
+
+// Exclui o usuário identificado pelo ID da URL.
+app.delete("/users/:id", async (req, res) => {
+  try {
+    const user = await db.orm.users
+      .where({ _id: req.params.id })
+      .delete();
+
+    if (!user) {
+      return res.status(404).json({
+        message: "Usuário não encontrado."
+      });
+    }
+
+    res.status(200).json({
+      message: "Usuário excluído com sucesso!"
+    });
+  } catch (erro) {
+    console.error(erro);
+
+    res.status(500).json({
+      message: "Erro ao excluir usuário."
+    });
+  }
+});
+
 app.listen(3000, () => {
   console.log("Servidor rodando em http://localhost:3000");
 });
